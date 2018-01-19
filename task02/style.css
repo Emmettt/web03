@@ -1,5 +1,10 @@
-.ppp{
+p {
     color:red;
     font-size:12px;  
+}
+
+div p{
+    color:rgb(47, 0, 255);
+    font-size:16px;    
 }
 
