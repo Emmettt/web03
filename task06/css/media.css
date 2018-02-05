@@ -1,0 +1,145 @@
+@media (max-width: 768px) {
+
+.header, .wrapper, .footer { width: 765px; }
+
+.menu {
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.nowrap1 {order: 2; justify-content: center;}
+.nowrap2 {order: 1; justify-content: center;}
+.nowrap3 {order: 3; justify-content: center;} 
+
+.logo_item {
+    width: 100px;
+}
+
+.journey {
+    font-size: 34pt;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+}
+
+.wrapper {
+    padding-left: 40px;
+    padding-right: 40px;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.top-flex {
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.main-article {
+    flex-basis: auto;
+}
+
+.counterMarks {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+        .counterMarks > h2  { width: 100%;}
+        .counterMarks > div { width: 30%; }
+
+.testimonial {
+    width: 160px;
+}
+}
+
+/*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
+
+@media (max-width: 480px) { 
+    
+    .header, .wrapper, .footer { width: 480px; }
+    
+    .wrapper {
+        padding-left: 38px;
+        padding-right: 38px;
+    }
+        
+    .bottom-flex, .article, .testimonialWrapper {
+        flex-direction: column;
+        justify-content: flex-start;
+        flex-basis: auto;
+    }
+
+    .menu_item {
+        font-size: 16pt;
+    }
+
+    .sub_menu_item {
+        font-size: 12pt;
+    }
+
+    .logo_item {
+        width: 77px;
+    }
+    
+    .journey {
+        font-size: 25pt;
+        width: 77px;
+        height: 77px;
+        line-height: 77px;
+    }
+
+    .big_pic {
+        display: none;
+    }
+    
+    .small_pic {
+        display: block;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+        
+    .counterMarks {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        flex-basis: auto;
+    }
+            .counterMarks > h2  { width: 100%;}
+            .counterMarks > div { width: 90%; }
+
+    .listBox > ul > li {
+        font-size: 11px;
+    }
+
+    .testimonialWrapper {
+        padding-left: 0;  
+    }  
+
+    .testimonial {
+        width: 267px;
+    }
+
+    .footerlink {
+        flex-wrap: wrap;
+        justify-content: start;
+        align-items: flex-start;
+        flex-basis: 80%;
+    }
+
+    .footerlink_el {
+        margin-top: 10px;
+        width: 80px;
+    }
+
+    .footerlink_el > a { 
+        font-size: 11pt;
+        line-height: 25px;
+    }
+
+    .contact > p{
+        width: 150px;
+        margin: 0;
+        padding: 0;
+        color: white;
+        text-decoration: none; 
+        line-height: 15px;
+    }
+}

@@ -1,0 +1,128 @@
+:root {
+   --menu_item_width: 110px;
+   --menu_item_height: 30px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url(../img/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #fff;
+}
+
+.wrapper {
+    width: 1024px;
+    margin: 30px auto;
+}
+
+.menu {
+    padding: 57px;
+    box-sizing: border-box;
+}
+
+.menu, 
+.sub_menu {
+    list-style: none;
+}
+
+.menu_item {
+    position: relative;
+    display: inline-block;
+    line-height: var(--menu_item_height);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: "Pathway Gothic One";
+    font-size: 20pt;
+    border: 5px solid rgba(169,191,229,0);
+    
+}
+
+.sub_menu {
+    display: none;
+    position: absolute;
+    top: calc(var(--menu_item_height) + 5px);
+    left: 25px;
+    border-top: 5px solid white;
+    border-bottom: 5px solid white;
+}
+
+.sub_menu_item {
+  display: block;
+  text-align: center;
+  font-size: 15pt;
+  color: #6b7488;
+}
+
+.menu_item > a:not(.journey) {
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    color: #fff;
+    width: var(--menu_item_width);
+    height: var(--menu_item_height);
+}
+
+.sub_menu_item > a {
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    line-height: 25px;
+    color: #6b7488;
+    background-color: #fff;
+    width: 65px;
+    height: 25px;
+}
+
+.logo_item {
+    width: 138px;
+}
+
+.journey {
+    display: block;
+    position: absolute;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: "Dorsa";
+    font-size: 44pt;
+    color: #263555;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #fff;
+    width: 138px;
+    height: 138px;
+    line-height: 138px;
+    top: calc(var(--menu_item_height) / 2 - 69px);
+}
+
+.menu_item > a:hover {
+    color: #263555;
+    transition: 0.4s all;
+}
+
+.menu_item:hover>.sub_menu {
+    display: block;
+    transition: 0.4s;
+}
+
+.sub_menu_item a:hover {
+    display: block;
+    color: rgb(11, 151, 245);
+    transition: 0.2s;
+}
+
+.sub_menu:before {
+    font-family: "arial";
+    content: "\25B2";
+    color: white;
+    font-size: 12px;
+    display: block;
+    position: absolute;
+    top: -22px;
+    left: 25px;
+
+}
