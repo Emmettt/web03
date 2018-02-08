@@ -96,14 +96,15 @@ body {
     background-color: #fff;
     width: 65px;
     height: 25px;
+
 }
   
 .logo_item {
+    position: relative;
     width: 148px;
 }
   
 .journey {
-    flex-grow: 1;
     display: block;
     text-decoration: none;
     text-transform: uppercase;
@@ -116,7 +117,7 @@ body {
     width: 138px;
     height: 138px;
     line-height: 138px;
-    top: -54px;
+    margin: auto;
 }
   
 .menu_item > a:hover {
@@ -175,15 +176,14 @@ body {
     justify-content: space-between;
     height: 133px;
     background-color: #30455b;
-    padding-left: 3%; 
+    padding-left: 5%; 
 }
 
 .footermenu {
-    display: flex;
+    column-count: 3;
+    padding: 35px 0;
     width: 68%;
     height: 100%;
-    align-items: center;
-    justify-content: space-around;
     list-style: none;
 }
 
@@ -202,7 +202,7 @@ body {
 .contact-section{
     width: 32%;
     height: 100%;
-    padding-top: 39px;
+    padding-top: 37px;
     padding-left: 4%;
 }  
 

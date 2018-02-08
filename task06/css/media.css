@@ -1,23 +1,16 @@
 @media (max-width: 768px) {
 
 .menu {
-    flex-direction: column;
-    align-content: center;
     padding-top: 20px;
 }
 
-.nowrap1 {order: 2;}
-.nowrap2 {order: 1;}
-.nowrap3 {order: 3;} 
-
-.nowrap1, .nowrap2, .nowrap3 {
-    min-width: 60%;
-}
-
-.logo_item {
-    width: 100px;
-    justify-content: center;
-}
+.item1 {order: 2; width: 30%;}
+.item2 {order: 3; }
+.item3 {order: 4; width: 30%;}
+.logo_item {order:1; width: 100%;}
+.item5 {order: 5; width: 30%;}
+.item6 {order: 6; }
+.item7 {order: 7; width: 30%;}
 
 .journey {
     font-size: 190%;
@@ -38,10 +31,6 @@
         font-size: 80%;
     }
 
-    .logo_item {
-        width: 77px;
-    }
-
     .journey {
         font-size: 150%;
         width: 77px;
@@ -60,7 +49,7 @@
 .footermenu {
     height: 60%;
     width: 280px;
-    justify-content: space-between;
+    padding: 20px 0 0 0 ; 
 }
     
 .footer_menu_item{
