@@ -251,9 +251,6 @@ body section .container3 {
     -ms-flex-line-pack: center;
         align-content: center; }
     body section .container3 .about .services-block .card {
-      -webkit-box-flex: 0;
-          -ms-flex: 0 0 30%;
-              flex: 0 0 30%;
       position: relative;
       margin: 0 5px 85px 5px; }
       body section .container3 .about .services-block .card:hover .tint {
