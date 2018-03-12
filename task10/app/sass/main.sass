@@ -1,0 +1,363 @@
+@font-face  
+  font-family: Montserrat 
+  src: url(../fonts/Montserrat-Regular.ttf)
+  
+@font-face
+  font-family: MontserratBold
+  src: url(../fonts/Montserrat-Bold.ttf) 
+
+@font-face 
+  font-family: Roboto 
+  src: url(../fonts/Roboto-Regular.ttf) 
+
+@font-face 
+  font-family: Kaushan Script
+  src: url(../fonts/KaushanScript-Regular.ttf) 
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+body 
+  header
+    height: 620px
+    min-width: 380px
+    background-image: url(../img/bg-small.png)
+    background-size: cover
+    .container1
+      max-width: 1200px
+      min-width: 350px
+      margin: auto
+      padding: 30px 15px 0
+      .logo
+        float: left
+        text-decoration: none
+        font-family: MontserratBold
+        font-size: 1.8em
+        font-weight: 700
+        line-height: 15px
+        color: white
+        &:hover 
+          color: #fce38a
+          transition: 0.3s
+      .nav
+        float: right
+        margin-bottom: 30px
+        .menu
+          display: flex
+          flex-direction: column
+          padding-top: 5px
+          li 
+            display: block
+            margin: 0 20px
+            a 
+              display: block
+              height: 25px
+              padding: 0 5px
+              font-family: Montserrat, regular
+              font-size: 0.82em
+              letter-spacing: 0.07em
+              font-weight: 500
+              text-transform: uppercase
+              text-decoration: none
+              color: white
+              border-bottom: 3px solid rgba(0,0,0,0)
+              &:hover 
+                color: #fce38a
+                transition: 0.2s
+              &:hover .icon use 
+                fill: #fce38a
+                transition: 0.2s
+              .icon
+                width: 17px
+                height: 17px
+      .welcome
+        clear: both
+        .slogan
+          margin-bottom: 80px 
+          .slogan1
+            font-family: Kaushan script, cursive
+            font-size: 2em        
+            color: white 
+            text-align: center 
+            margin: 0 0 30px 0 
+          .slogan2
+            width: 290px
+            margin: auto
+            font-family: MontserratBold, regular
+            font-size: 3em
+            text-align: center
+            text-transform: uppercase
+            line-height: 0.9em
+            color: white 
+            text-align: center
+        .hdr-button
+          display: block
+          width: 160px
+          height: 40px
+          border: 3px solid white
+          color: white
+          font-family: Montserrat
+          font-size: 1em
+          font-weight: 700
+          text-transform: uppercase
+          line-height: 35px
+          text-align: center
+          text-decoration: none
+          margin: auto
+          &:hover
+            color: #e88282
+            border: 3px solid #e88282
+            background-color: white 
+            transition: 0.3s
+  main
+    .container2
+      max-width: 1200px
+      min-width: 380px
+      margin: auto
+      padding: 45px 15px 0
+      .suggestion
+        min-width: 350px
+        .subtitle 
+          font-family: Kaushan script, cursive
+          font-size: 1.5em
+          color: #333333
+          text-align: center
+          margin-bottom: 20px
+        .title
+          position: relative
+          font-family: MontserratBold, regular 
+          font-size: 1.7em
+          text-transform: uppercase
+          color: #333333
+          text-align: center
+          margin-bottom: 100px
+          min-width: 290px
+          &:after
+            content: ""
+            position: absolute
+            left: 50%
+            bottom: -40px
+            width: 60px
+            height: 3px
+            background: #f38181
+            transform: translateX(-50%)
+        .services-block
+          display: flex
+          flex-direction: row
+          flex-wrap: wrap
+          justify-content: center
+          align-items: flex-start
+          min-width: 350px
+          margin-bottom: 40px
+          .service
+            position: relative
+            padding-left: 50px
+            margin: 0 10px 60px 10px
+            width: 290px
+            .service__icon
+              position: absolute
+              top: 0px
+              left: 5px
+            .service__header
+              font-family: MontserratBold, regular 
+              font-size: 0.9em
+              text-transform: uppercase
+              color: #333333
+              margin-bottom: 10px
+            .service__describe
+              color: #999
+              font-family: Roboto
+              font-size: 15px
+              font-weight: 400
+              line-height: 24px
+  
+  section 
+    .container3
+      max-width: 1200px
+      min-width: 380px
+      margin: auto
+      padding: 45px 15px 0
+      .about
+        .subtitle 
+          font-family: Kaushan script, cursive
+          font-size: 1.5em
+          color: #333333
+          text-align: center
+          margin-bottom: 20px
+        .title
+          position: relative
+          font-family: MontserratBold, regular 
+          font-size: 1.7em
+          text-transform: uppercase
+          color: #333333
+          text-align: center
+          margin-bottom: 80px
+          min-width: 350px
+          &:after
+            content: ""
+            position: absolute
+            left: 50%
+            bottom: -40px
+            width: 60px
+            height: 3px
+            background: #f38181
+            transform: translateX(-50%)
+        .service__describe
+          color: #999
+          font-family: Roboto
+          font-size: 15px
+          font-weight: 400
+          line-height: 24px
+          max-width: 900px
+          min-width: 350px
+          margin:  0 auto 50px
+          text-align: center
+        .services-block
+          display: flex
+          flex-wrap: wrap
+          justify-content: center
+          align-content: center
+          .card
+            flex: 0 0 30%
+            position: relative
+            margin: 0 5px 85px 5px 
+            &:hover .tint 
+              opacity: 1
+              transform: translate(-7px, -7px)
+            &:hover img 
+              transform: translate(-7px, -7px)
+            img 
+              position: relative
+              display: block
+              width: 380px
+              height: 470px
+              margin-bottom: 30px
+              transition: all 0.2s 
+            .tint
+              position: absolute
+              top: 0px
+              left: 0px
+              width: 380px
+              height: 470px
+              background-image: linear-gradient(to top, rgba(252, 227, 138, 0.88) 0%, rgba(243, 129, 129, 0.88) 100%)
+              box-shadow: 7px 7px 0 0 #95e1d3
+              opacity: 0
+              transition: all 0.2s
+              .icon-block
+                width: 100%
+                text-align: center
+                margin-top: 210px
+                .social_link 
+                  display: inline-block
+                  margin: 0 -2px 
+                  border-right: 1px solid #f38181 
+                  width: 55px
+                  height: 55px
+                  background-color: #fce38a
+                  &:hover
+                    background-color: #f38181
+                    transition: 0.3s
+                  &:hover .icon
+                    background-color: #f38181
+                    transition: 0.3s
+                  &:hover .icon use  
+                    fill: white
+                    transition: 0.3s
+                  .icon
+                    background-color: #fce38a
+                    width: 27px
+                    height: 27px
+                    margin: 14px
+                  &:nth-child(4)
+                    border-right: none
+            h3 
+              font-family: MontserratBold, regular 
+              font-size: 0.9em
+              text-transform: uppercase
+              color: #333333
+              text-align: center
+              margin-bottom: 10px
+            p 
+              color: #b9b9b9
+              font-family: Roboto
+              font-size: 15px
+              font-weight: 300
+              font-style: italic
+              line-height: 24px
+              text-align: center
+  footer 
+    max-width: 1200px
+    min-width: 380px
+    border-top: 1px solid lightgrey
+    //height: 80px
+    margin: 10px auto
+    padding: 15px 15px 
+    div
+      height: 60px
+      padding: 10px
+      p 
+        font-family: MontserratBold, regular 
+        font-size: 0.9em
+        color: #333333
+        line-height: 40px
+        text-align: center
+        margin-bottom: 40px
+        a
+          text-decoration: none
+          color: #333333
+        a:hover
+          text-decoration: none
+          color: #f38181
+    form 
+      margin-top: 10px
+      text-align: center
+      input
+        width: 220px
+        height: 40px
+        background-color: white
+        border: 1px solid #e7e7e7
+        font-family: Roboto
+        font-size: 15px
+        font-weight: 300
+        font-style: italic
+        line-height: 24px
+        padding-left: 15px
+        margin-right: -5px
+      input[type="submit"]
+        width: 100px
+        height: 40px
+        background-color: #95e1d3
+        font-family: MontserratBold, regular 
+        font-size: 0.9em
+        font-style: normal
+        text-transform: uppercase
+        color: white
+        text-align: center
+        padding: 0
+      *::-webkit-input-placeholder 
+        color: #dddddd
+        opacity: 1
+      *:-moz-placeholder 
+        color: #dddddd
+        opacity: 1
+      *::-moz-placeholder 
+        color: #dddddd
+        opacity: 1
+      *:-ms-input-placeholder 
+        color: #dddddd
+        opacity: 1
+            
+      
+
+                    
+                 
+
+              
+
+          
+
+
+            
+                         
