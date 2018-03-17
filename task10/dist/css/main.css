@@ -277,7 +277,6 @@ body main section .container3 {
                   transform: translate(-10px, -10px); }
         body main section .container3 .about .services-block .card .card__imgcontainer .card__imgcontainer_img {
           display: block;
-          max-width: 380px;
           height: auto;
           margin-bottom: 30px;
           -webkit-transition: all 0.2s;
@@ -339,7 +338,8 @@ body main section .container3 {
         text-transform: uppercase;
         color: #333333;
         margin-bottom: 10px;
-        text-align: center; }
+        text-align: center;
+        max-width: 380px; }
       body main section .container3 .about .services-block .card .card__describe {
         color: #b9b9b9;
         font-family: Roboto, regular;
