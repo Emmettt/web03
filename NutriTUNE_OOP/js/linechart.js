@@ -1,7 +1,6 @@
 class LineChart {
   constructor(menu) {
     this.menu = menu;
-    this.ctx = document.getElementById('myChart').getContext('2d');
     this.datasetP = [];
     this.datasetF = [];
     this.datasetC = [];
@@ -28,12 +27,14 @@ class LineChart {
         ]
       }
     };
+    this.ctx;
     this.chart;
   }
 
   init() {
     this.setLabels();
     this.updateDatasets();
+    this.ctx = document.getElementById('myChart').getContext('2d');
     Chart.defaults.global.defaultFontColor = '#ccc';
     Chart.defaults.global.defaultFontSize = 13;
     this.chart = new Chart(this.ctx, this.param);
