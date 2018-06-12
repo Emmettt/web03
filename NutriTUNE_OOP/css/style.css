@@ -1,0 +1,167 @@
+body {
+  background-color: rgb(32, 32, 32);
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  z-index: 0;
+}
+
+.tableWrapper {
+  margin: 50px;
+  min-width: 600px;
+}
+
+.heading {
+  font-style: italic;
+}
+
+table {
+  border-spacing: 1px;
+  user-select: none;
+}
+
+td {
+  width: 70px;
+  height: 20px;
+  text-align: end;
+  padding-right: 5px;
+  color: rgb(230, 230, 230);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.9rem;
+}
+
+.widecell,
+.dishwidecell {
+  width: 200px;
+}
+
+.foodintake td {
+  background: #333;
+  color: yellowgreen;
+  font-weight: 500;
+}
+
+.dish td {
+  background: rgb(100, 100, 100);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.editable {
+  cursor: pointer;
+}
+
+.widecell {
+  position: relative;
+}
+
+.tableContainer .widecell::before {
+  content: '+';
+  display: block;
+  position: absolute;
+  text-align: center;
+  line-height: 12px;
+  font-size: 1.2em;
+  font-weight: 800;
+  width: 15px;
+  height: 15px;
+  background: rgb(100, 100, 100);
+  left: -16px;
+  top: -7px;
+}
+
+/*************** FOOTER ROWS ****************/
+
+#row1 td {
+  background: rgb(45, 45, 45);
+  border-top: 2px solid red;
+}
+
+#row2 td {
+  background: rgb(55, 55, 55);
+}
+
+#row3 td {
+  background: rgb(75, 75, 75);
+}
+
+#row4 td {
+  background: rgb(100, 100, 100);
+}
+
+/* input-range container (absolute) */
+
+.relWrapper {
+  width: 0px;
+  height: 0px;
+  background: lime;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+/* input range */
+
+.rng {
+  -webkit-appearance: none;
+  position: absolute;
+  z-index: 99999;
+  background: #555;
+  border: 1px solid rgb(190, 190, 190);
+  padding: 0 8px;
+  display: none;
+  width: 135px;
+  height: 20px;
+}
+
+.rng::-webkit-slider-runnable-track {
+  width: 80px;
+  height: 1px;
+  background: rgb(255, 0, 0);
+  margin-top: 0px;
+}
+
+.rng::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 12px;
+  border-radius: 30%;
+  background: yellowgreen;
+  margin-top: -8px;
+}
+
+.rng:focus {
+  outline: none;
+}
+
+.rng:focus::-webkit-slider-runnable-track {
+  background: rgb(250, 0, 0);
+}
+
+.chartWrapper {
+  width: 50%;
+  min-width: 600px;
+  margin: 50px;
+}
+
+/* ----------------------------------*/
+
+@media (max-width: 1050px) {
+  .tableWrapper {
+    margin: 0;
+    padding: 0 5px;
+  }
+
+  .chartWrapper {
+    margin: 50px 0 0 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .wrapper {
+    flex-wrap: wrap;
+  }
+}
