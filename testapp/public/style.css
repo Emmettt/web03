@@ -1,0 +1,93 @@
+p {
+  margin: 0;
+}
+
+.contactText {
+  display: inline-block;
+}
+
+.contactListWrapper {
+  height: 480px;
+  margin: 10px 0;
+  overflow-y: scroll;
+}
+
+.sectionList {
+  width: 400px;
+  height: 500px;
+  display: inline-block;
+  margin: 20px;
+  padding: 50px 50px 50px 0;
+  border: 1px solid grey;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 10px 10px 5px lightgray;
+}
+
+.sectionInfo {
+  width: 500px;
+  height: 500px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 20px 20px 0 0;
+  padding: 50px;
+  border: 1px solid grey;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 10px 10px 5px lightgray;
+}
+
+.avatar32 {
+  display: inline-block;
+  margin: 10px 10px 0 10px;
+}
+
+.name {
+  font-size: 1.1em;
+}
+.jobtitle {
+  font-size: 1em;
+}
+
+li:hover {
+  outline: 2px solid lightskyblue;
+  cursor: pointer;
+}
+
+input {
+  outline: 2px solid lightskyblue;
+  width: 335px;
+  height: 30px;
+  margin-left: 50px;
+  padding: 5px;
+  font-size: 1.4em;
+  color: grey;
+}
+
+ul {
+  list-style: none;
+}
+
+.avatarFullSize {
+  display: inline-block;
+  width: 128px;
+  margin: 0 20px 20px 0;
+}
+
+.firstName,
+.lastName {
+  font-size: 1.6em;
+}
+
+.job,
+.adress,
+.contacts {
+  font-size: 1.2em;
+}
+
+.infoWrapper {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.contacts::nth-child(0) {
+  margin-top: 30px;
+}
