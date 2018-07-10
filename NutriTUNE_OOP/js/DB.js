@@ -80,9 +80,9 @@ let foodDB = [
   },
   {
     dish: 'Выберите блюдо',
-    proteins: 0,
-    fats: 0,
-    carbohydrates: 0,
-    caloricity: 0
+    proteins: 10,
+    fats: 1,
+    carbohydrates: 10,
+    caloricity: 100
   }
 ];

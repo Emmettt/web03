@@ -53,25 +53,6 @@ td {
   cursor: pointer;
 }
 
-.widecell {
-  position: relative;
-}
-
-.tableContainer .widecell::before {
-  content: '+';
-  display: block;
-  position: absolute;
-  text-align: center;
-  line-height: 12px;
-  font-size: 1.2em;
-  font-weight: 800;
-  width: 15px;
-  height: 15px;
-  background: rgb(100, 100, 100);
-  left: -16px;
-  top: -7px;
-}
-
 /*************** FOOTER ROWS ****************/
 
 #row1 td {
@@ -141,10 +122,99 @@ td {
   background: rgb(250, 0, 0);
 }
 
+.chooseFoodIntakeMenu {
+  width: 205px;
+  height: 45px;
+  background: #333;
+  border: 1px solid black;
+  position: absolute;
+  display: none;
+}
+
+.chooseDishMenu {
+  width: 205px;
+  height: 68px;
+  background: #333;
+  border: 1px solid black;
+  position: absolute;
+  display: none;
+}
+
+.chooseDish,
+.addFoodIntake,
+.addDish,
+.removeFoodIntake,
+.removeDish {
+  height: 23px;
+  background: #333;
+  text-indent: 10px;
+  line-height: 23px;
+  color: rgb(230, 230, 230);
+}
+
+.chooseDish:hover,
+.addFoodIntake:hover,
+.addDish:hover,
+.removeFoodIntake:hover,
+.removeDish:hover {
+  background: #555;
+  color: yellowgreen;
+  outline: 1px solid yellowgreen;
+  cursor: pointer;
+}
+
 .chartWrapper {
   width: 50%;
   min-width: 600px;
   margin: 50px;
+}
+
+.choosing {
+  position: absolute;
+  display: none;
+  left: 120px;
+  top: 50px;
+  border: 5px solid grey;
+  width: 600px;
+  height: 800px;
+  margin: auto;
+  background: rgb(130, 130, 130);
+}
+
+.DBTable {
+  background: rgb(0, 0, 0);
+  color: black;
+  border-spacing: 1px;
+  user-select: none;
+}
+
+.DBTable tr {
+  height: 30px;
+  background: rgb(130, 130, 130);
+}
+
+.dish_select:hover td {
+  background: rgb(31, 32, 32);
+  color: rgb(230, 230, 230);
+}
+
+.DBTable td {
+  text-align: end;
+  padding-right: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.9rem;
+}
+
+.dish_header {
+  width: 200px;
+  background: #111;
+  color: #ccc;
+}
+
+.qty_header {
+  width: 100px;
+  background: #111;
+  color: #ccc;
 }
 
 /* ----------------------------------*/

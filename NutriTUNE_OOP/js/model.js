@@ -64,23 +64,66 @@ class DayMenu {
     return dishTotals;
   }
 
-  addFoodIntake(foodintake) {
-    this.foodIntakes.push(foodintake);
+  getClickedFoodIntake(clickedElem) {
+    if (clickedElem.classList.contains('widecell')) {
+      return this.foodIntakes.find(el => clickedElem.textContent === el.name);
+    }
+    if (clickedElem.classList.contains('dishwidecell')) {
+      return this.foodIntakes.find(el =>
+        el.dishes.some(
+          elem => elem.id === clickedElem.nextElementSibling.dataset.id
+        )
+      );
+    }
+  }
+
+  getClickedDish(clickedElem) {
+    let dish;
+    this.foodIntakes.find(
+      el =>
+        (dish = el.dishes.find(
+          elem => elem.id === clickedElem.nextElementSibling.dataset.id
+        ))
+    );
+    return dish;
+  }
+
+  getNewDish(name) {
+    let dish;
+    this.foodIntakes.find(
+      el => (dish = el.dishes.find(elem => elem.name === name))
+    );
+    return dish;
+  }
+
+  addFoodIntake(name, order) {
+    this.foodIntakes.forEach(
+      el => (el.order >= order ? (el.order += 1) : el.order)
+    );
+    const fi = new FoodIntake();
+    fi.name = name;
+    fi.order = order;
+    this.foodIntakes.push(fi);
+
     this.foodIntakes.sort((a, b) => a.order >= b.order);
   }
 
-  addDish(dish) {
-    this.foodIntakes[0].dishes.push(dish);
+  addDish(foodintake, name, qty) {
+    foodintake.dishes.push(new Dish(name, qty));
   }
 
   removeFoodIntake(foodintake) {
-    menu.foodIntakes = menu.foodIntakes.filter(el => el !== foodintake);
+    this.foodIntakes = this.foodIntakes.filter(el => el !== foodintake);
   }
 
   removeDish(dish) {
-    menu.foodIntakes.forEach(el => {
+    this.foodIntakes.forEach(el => {
       el.dishes = el.dishes.filter(elem => elem !== dish);
     });
+  }
+
+  dishChange(id, name) {
+    this.foddintakes.find;
   }
 
   makeJSON() {
@@ -98,9 +141,9 @@ class FoodIntake {
 }
 
 class Dish {
-  constructor(food, qty) {
-    this.name = food || 'Выберите блюдо';
-    this.qty = qty || 0;
+  constructor(name, qty) {
+    this.name = name || 'Выберите блюдо';
+    this.qty = qty || 30;
     this.id =
       '_' +
       Math.random()

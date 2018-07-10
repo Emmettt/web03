@@ -1,6 +1,7 @@
 class LineChart {
   constructor(menu) {
     this.menu = menu;
+    this.ctx = document.getElementById('myChart').getContext('2d');
     this.datasetP = [];
     this.datasetF = [];
     this.datasetC = [];
@@ -34,7 +35,6 @@ class LineChart {
   init() {
     this.setLabels();
     this.updateDatasets();
-    this.ctx = document.getElementById('myChart').getContext('2d');
     Chart.defaults.global.defaultFontColor = '#ccc';
     Chart.defaults.global.defaultFontSize = 13;
     this.chart = new Chart(this.ctx, this.param);
@@ -51,7 +51,7 @@ class LineChart {
     this.datasetC.splice(0, this.datasetC.length);
 
     this.menu.foodIntakes.forEach(el => {
-      const dt = menu.getFoodIntakeTotals(el);
+      const dt = this.menu.getFoodIntakeTotals(el);
       this.datasetP.push(dt.proteins);
       this.datasetF.push(dt.fats);
       this.datasetC.push(dt.carbohydrates);

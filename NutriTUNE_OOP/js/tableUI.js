@@ -1,18 +1,65 @@
 class TableUI {
-  constructor(menu) {
+  constructor(menu, linechart) {
     this.tableContainer = document.querySelector('.tableContainer');
     this.footer = document.querySelector('.footer');
+
+    this.chooseFoodIntakeMenu = document.querySelector('.chooseFoodIntakeMenu');
+    this.addFoodIntakeMenuItem = document.querySelector('.addFoodIntake');
+    this.removeFoodIntakeMenuItem = document.querySelector('.removeFoodIntake');
+
+    this.chooseDishMenu = document.querySelector('.chooseDishMenu');
+    this.chooseDishMenuItem = document.querySelector('.chooseDish');
+    this.addDishMenuItem = document.querySelector('.addDish');
+    this.removeDishMenuItem = document.querySelector('.removeDish');
+
+    this.dishList = document.querySelector('.chooseTable');
+    this.dishListContainer = document.querySelector('.choosing');
+
     this.rangeInput = document.querySelector('.rng');
-    this.rangeInput.addEventListener('input', this.rangeTune.bind(this));
+    this.tableContainer.addEventListener(
+      'click',
+      this.clickEventHandler.bind(this)
+    );
+    this.addFoodIntakeMenuItem.addEventListener(
+      'click',
+      this.addFoodIntake.bind(this)
+    );
+    this.removeFoodIntakeMenuItem.addEventListener(
+      'click',
+      this.removeFoodIntake.bind(this)
+    );
+    this.chooseDishMenuItem.addEventListener(
+      'click',
+      this.chooseDishTableRender.bind(this)
+    );
+    this.addDishMenuItem.addEventListener('click', () => {
+      this.addDish();
+      this.chooseDishTableRender();
+    });
+    this.removeDishMenuItem.addEventListener(
+      'click',
+      this.removeDish.bind(this)
+    );
+    this.rangeInput.addEventListener(
+      'input',
+      _.throttle(this.rangeTune.bind(this), 100)
+    );
     this.rangeInput.addEventListener(
       'mouseleave',
       () => (this.rangeInput.style.display = 'none')
     );
+
+    this.DBTAble = document.querySelector('.DBTable');
+    this.DBTAble.addEventListener('click', this.dish_select_handler.bind(this));
+
     this.menu = menu;
+    this.linechart = linechart;
     this.tableHTML = '';
+
     this.editingNow = {
       targetElement: '',
       currentDish: ''
+      //currentDishId: ''
     };
   }
 
@@ -29,34 +76,184 @@ class TableUI {
     });
     this.tableContainer.insertAdjacentHTML('beforeEnd', this.tableHTML);
     this.refreshFooter();
-    document
-      .querySelectorAll('.editable')
-      .forEach(el => el.addEventListener('click', this.rangeAppear.bind(this)));
   }
 
   createFoodIntakeRow(foodIntakeTotals) {
-    this.tableHTML += `<table class="table"><tbody><tr class="foodintake"><td class="widecell">${
-      foodIntakeTotals.name
-    }</td><td></td><td>${foodIntakeTotals.proteins}</td><td>${
-      foodIntakeTotals.fats
-    }</td><td>${foodIntakeTotals.carbohydrates}</td><td>${
-      foodIntakeTotals.caloricity
-    }</td></tr>`;
+    this.tableHTML += `<table class="table ${foodIntakeTotals.name}">
+    <tbody>
+    <tr class="foodintake">
+    <td class="widecell">${foodIntakeTotals.name}</td>
+    <td></td>
+    <td>${foodIntakeTotals.proteins}</td>
+    <td>${foodIntakeTotals.fats}</td>
+    <td>${foodIntakeTotals.carbohydrates}</td>
+    <td>${foodIntakeTotals.caloricity}</td>
+    </tr>`;
   }
 
   createDishRow(dishTotals) {
-    this.tableHTML += `<tr class="dish"><td class="dishwidecell">${
-      dishTotals.name
-    }</td><td class="editable" data-id="${dishTotals.id}">${
-      dishTotals.qty
-    }</td><td>${dishTotals.proteins}</td><td>${dishTotals.fats}</td><td>${
-      dishTotals.carbohydrates
-    }</td><td>${dishTotals.caloricity}</td></tr>`;
+    this.tableHTML += `<tr class="dish">
+    <td class="dishwidecell">${dishTotals.name}</td>
+    <td class="editable" data-id="${dishTotals.id}">${dishTotals.qty}</td>
+    <td>${dishTotals.proteins}</td>
+    <td>${dishTotals.fats}</td>
+    <td>${dishTotals.carbohydrates}</td>
+    <td>${dishTotals.caloricity}</td>
+    </tr>`;
+  }
+
+  clickEventHandler(e) {
+    if (event.target.className === 'editable') {
+      this.rangeAppear(event);
+    }
+    if (event.target.className === 'widecell') {
+      this.chooseFoodIntakeAppear(event);
+    }
+    if (event.target.className === 'dishwidecell') {
+      this.editingNow.targetElement = e.target;
+      this.editingNow.currentDish = e.target.textContent;
+      //this.editingNow.currentDishId = e.target.nextElementSibling.dataset.id;
+      this.dishMenu(event);
+    }
+  }
+
+  chooseFoodIntakeAppear(event) {
+    this.editingNow.targetElement = event.target;
+    this.chooseFoodIntakeMenu.style.top =
+      event.clientY - event.offsetY + 22 + 'px';
+    this.chooseFoodIntakeMenu.style.left =
+      event.clientX - event.offsetX - 1 + 'px';
+    this.chooseFoodIntakeMenu.style.display = 'block';
+  }
+
+  dishMenu(event) {
+    this.chooseDishMenu.style.top = event.clientY - event.offsetY + 22 + 'px';
+    this.chooseDishMenu.style.left = event.clientX - event.offsetX - 1 + 'px';
+    this.chooseDishMenu.style.display = 'block';
+  }
+
+  addFoodIntake() {
+    const foodintake = this.menu.foodIntakes.find(
+      el => el.name === this.editingNow.targetElement.textContent
+    );
+    this.menu.addFoodIntake(this.setFoodIntakeName(), foodintake.order);
+    this.chooseFoodIntakeMenu.style.display = 'none';
+    this.repaintAll();
+  }
+
+  setFoodIntakeName() {
+    let name = prompt('Введите имя приема пищи : ');
+    return name;
+  }
+
+  removeFoodIntake() {
+    if (this.menu.foodIntakes.length === 3) {
+      this.chooseFoodIntakeMenu.style.display = 'none';
+      alert('Не надо питаться меньше трех раз в день!');
+      return;
+    }
+    this.menu.removeFoodIntake(
+      this.menu.getClickedFoodIntake(this.editingNow.targetElement)
+    );
+    this.chooseFoodIntakeMenu.style.display = 'none';
+    this.repaintAll();
+  }
+
+  dish_select_handler(e) {
+    if (e.target.className !== 'chooseDish_cell') return;
+    let selectedDish;
+    selectedDish = e.target.parentNode.dataset.id;
+    this.dishListContainer.style.display = 'none';
+    this.dishEdit(selectedDish);
+  }
+
+  dishEdit(selectedDish) {
+    let dish = this.menu.getNewDish('Выберите блюдо');
+    if (dish) {
+      dish.name = selectedDish;
+      dish.qty = 30;
+    } else {
+      this.menu.getClickedDish(
+        this.editingNow.targetElement
+      ).name = selectedDish;
+      this.menu.getClickedDish(this.editingNow.targetElement).qty = 30;
+    }
+    this.repaintAll();
+  }
+
+  addDish() {
+    this.menu.addDish(
+      this.menu.getClickedFoodIntake(this.editingNow.targetElement)
+    );
+  }
+
+  dish_add_selected(selectedDish) {
+    this.chooseDishMenu.style.display = 'none';
+    this.chooseDishTableRender();
+    selectedDish = e.target.parentNode.dataset.id;
+    this.dishListContainer.style.display = 'none';
+
+    this.menu.addDish(
+      this.menu.getClickedFoodIntake(this.editingNow.targetElement),
+      selectedDish,
+      30
+    );
+
+    this.repaintAll();
+  }
+
+  addDishWindow() {
+    this.chooseDishMenu.style.display = 'none';
+    this.chooseDishTableRender();
+  }
+
+  chooseDishTableRender() {
+    const DBmarkup = foodDB.reduce(
+      (acc, el) =>
+        acc +
+        `
+      <tr class='dish_select' data-id="${el.dish}">
+      <td class="chooseDish_cell">${el.dish}</td>
+      <td class="chooseDish_cell">${el.proteins}</td>
+      <td class="chooseDish_cell">${el.fats}</td>
+      <td class="chooseDish_cell">${el.carbohydrates}</td>
+      <td class="chooseDish_cell">${el.caloricity}</td>
+      </tr>
+      `,
+      ''
+    );
+
+    this.dishList.innerHTML = `<tr>
+    <td class='dish_header'>Блюдо</td>
+    <td class='qty_header'>Белки</td>
+    <td class='qty_header'>Жиры</td>
+    <td class='qty_header'>Углеводы</td>
+    <td class='qty_header'>ККал</td>
+    </tr>`;
+
+    this.dishList.insertAdjacentHTML('beforeEnd', DBmarkup);
+
+    this.chooseDishMenu.style.display = 'none';
+    this.dishListContainer.style.display = 'block';
+  }
+
+  removeDish() {
+    if (
+      this.menu.getClickedFoodIntake(this.editingNow.targetElement).dishes
+        .length === 1
+    ) {
+      this.removeFoodIntake();
+    }
+    this.menu.removeDish(
+      this.menu.getClickedDish(this.editingNow.targetElement)
+    );
+    this.chooseDishMenu.style.display = 'none';
+    this.repaintAll();
   }
 
   rangeAppear(event) {
     this.editingNow.targetElement = event.target;
-    menu.foodIntakes.find(
+    this.menu.foodIntakes.find(
       el =>
         (this.editingNow.currentDish = el.dishes.find(
           elem => elem.id === event.target.dataset.id
@@ -79,8 +276,8 @@ class TableUI {
       this.editingNow.targetElement
     );
     this.refreshFooter();
-    linechart.updateDatasets();
-    linechart.refresh();
+    this.linechart.updateDatasets();
+    this.linechart.refresh();
   }
 
   refreshDishRow(dish, target) {
@@ -199,5 +396,11 @@ class TableUI {
     this.footer.rows[3].cells[2].textContent = balance.proteins;
     this.footer.rows[3].cells[3].textContent = balance.fats;
     this.footer.rows[3].cells[4].textContent = balance.carbohydrates;
+  }
+
+  repaintAll() {
+    this.renderTable();
+    this.linechart.init();
+    this.linechart.refresh();
   }
 }

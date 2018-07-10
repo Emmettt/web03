@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 
 <head>
@@ -8,14 +8,13 @@
 	<link rel="icon" type="image/png" href="img/icon.png" />
 	<link rel="stylesheet" href="css/style.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+
 	<title>NutriTUNE</title>
 </head>
 
 <body>
 	<div class="wrapper">
-		<div class="relWrapper">
-			<input class="rng" type="range" min="30" max="300" step="10">
-		</div>
 		<div class="tableWrapper">
 			<table class="heading">
 				<tbody>
@@ -72,7 +71,28 @@
 			<canvas id="myChart"></canvas>
 		</div>
 	</div>
-	<script src="js/DB.js"></script>
+
+	<div class="TEMPLATES relWrapper">
+		<input class="rng" type="range" min="30" max="300" step="10">
+		<div class="chooseFoodIntakeMenu">
+			<div class="addFoodIntake">Добавить прием пищи </div>
+			<div class="removeFoodIntake">Удалить прием пищи</div>
+		</div>
+		<div class="chooseDishMenu">
+			<div class="chooseDish">Заменить блюдо</div>
+			<div class="addDish">Добавить блюдо</div>
+			<div class="removeDish">Удалить блюдо</div>
+		</div>
+		<div class="choosing">
+			<table class="DBTable">
+				<tbody class="chooseTable">
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<script src="js/db.js"></script>
 	<script src="js/model.js"></script>
 	<script src="js/linechart.js"></script>
 	<script src="js/tableUI.js"></script>
